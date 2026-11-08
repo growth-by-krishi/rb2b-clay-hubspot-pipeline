@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.example/lead.schema.json",
+  "title": "Routed lead",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "idempotencyKey", "synthetic", "visitor", "enrichment", "score", "alert", "stages", "qualified", "disposition"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^lead_[a-z0-9]+$" },
+    "idempotencyKey": { "type": "string" },
+    "synthetic": { "const": true },
+    "qualified": { "type": "boolean" },
+    "disposition": { "enum": ["mql", "nurture"] },
+    "stages": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["stage", "status", "durationMs", "input", "output"],
+        "properties": {
+          "stage": { "enum": ["identify", "enrich", "score", "crm", "alert"] },
+          "status": { "enum": ["ok", "skipped", "error"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.example/rb2b-webhook.schema.json",
+  "title": "RB2B-shaped visitor webhook",
+  "type": "object",
+  "additionalProperties": true,
+  "anyOf": [
+    { "required": ["business_email"] },
+    { "required": ["Business Email"] },
+    { "required": ["email"] }
+  ],
+  "properties": {
+    "business_email": { "type": "string", "format": "email" },
+    "Business Email": { "type": "string", "format": "email" },
+    "email": { "type": "string", "format": "email" },
+    "First Name": { "type": "string" },
+    "Last Name": { "type": "string" },
+    "first_name": { "type": "string" },
+    "last_name": { "type": "string" },
+    "Title": { "type": "string" },
+    "title": { "type": "string" },
+    "Company Name": { "type": "string" },
+    "company_name": { "type": "string" },
+    "Website": { "type": "string" },
+    "website": { "type": "string" },
+    "Industry": { "type": "string" },
+    "industry": { "type": "string" },
+    "Employee Count": { "type": ["string", "number"] },
+    "employee_count": { "type": ["string", "number"] },
+    "Captured URL": { "type": "string" },
+    "captured_url": { "type": "string" },
+    "Seen At": { "type": "string" },
+    "seen_at": { "type": "string" },
+    "pages": { "type": "array", "items": { "type": "string" } },
+    "LinkedIn URL": { "type": "string" },
+    "Tags": { "type": "string" }
+  }
+}

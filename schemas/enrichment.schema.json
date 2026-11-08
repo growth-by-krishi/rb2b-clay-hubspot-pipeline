@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.example/enrichment.schema.json",
+  "title": "Enrichment waterfall result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile", "attempts", "filledBy"],
+  "properties": {
+    "filledBy": { "type": ["string", "null"] },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["industry", "employeeCount", "employeeRange", "revenueRange", "city", "state", "emailStatus", "linkedinUrl", "companyName"],
+      "properties": {
+        "industry": { "type": ["string", "null"] },
+        "employeeCount": { "type": ["number", "null"] },
+        "employeeRange": { "type": ["string", "null"] },
+        "revenueRange": { "type": ["string", "null"] },
+        "city": { "type": ["string", "null"] },
+        "state": { "type": ["string", "null"] },
+        "emailStatus": { "type": ["string", "null"], "enum": ["valid", "unknown", "invalid", null] },
+        "linkedinUrl": { "type": ["string", "null"] },
+        "companyName": { "type": ["string", "null"] }
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["provider", "label", "ok", "attempts", "durationMs", "fields"],
+        "properties": {
+          "provider": { "enum": ["clearbit", "apollo", "peopledata"] },
+          "ok": { "type": "boolean" },
+          "attempts": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

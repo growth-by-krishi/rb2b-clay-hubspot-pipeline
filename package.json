@@ -1,0 +1,35 @@
+{
+  "name": "visitor-route-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live demo: visitor ID to enrichment to ICP score to CRM lead (fake data only).",
+  "type": "module",
+  "keywords": [
+    "marketing-portfolio",
+    "demand-generation",
+    "cloudflare-workers",
+    "synthetic-data"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "start": "wrangler dev --port 8787",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "replay": "tsx scripts/replay.ts",
+    "replay:remote": "tsx scripts/replay.ts --url http://127.0.0.1:8787",
+    "check": "npm run typecheck && npm test && npm run replay"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2",
+    "wrangler": "^4.14.0"
+  }
+}

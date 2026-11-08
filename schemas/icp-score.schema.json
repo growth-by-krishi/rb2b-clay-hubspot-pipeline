@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.example/icp-score.schema.json",
+  "title": "ICP score",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["total", "threshold", "qualified", "disposition", "breakdown", "weights", "contributions", "reasons"],
+  "properties": {
+    "total": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "type": "number" },
+    "qualified": { "type": "boolean" },
+    "disposition": { "enum": ["mql", "nurture"] },
+    "breakdown": { "$ref": "#/definitions/parts" },
+    "weights": { "$ref": "#/definitions/parts" },
+    "contributions": { "$ref": "#/definitions/parts" },
+    "reasons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["industryFit", "titleSeniority", "companySize", "pageIntent"],
+      "properties": {
+        "industryFit": { "type": "string" },
+        "titleSeniority": { "type": "string" },
+        "companySize": { "type": "string" },
+        "pageIntent": { "type": "string" }
+      }
+    }
+  },
+  "definitions": {
+    "parts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["industryFit", "titleSeniority", "companySize", "pageIntent"],
+      "properties": {
+        "industryFit": { "type": "number" },
+        "titleSeniority": { "type": "number" },
+        "companySize": { "type": "number" },
+        "pageIntent": { "type": "number" }
+      }
+    }
+  }
+}

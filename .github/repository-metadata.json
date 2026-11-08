@@ -1,0 +1,6 @@
+{
+  "name": "rb2b-clay-hubspot-pipeline",
+  "description": "Live demo: visitor ID to enrichment to ICP score to CRM lead (fake data only)",
+  "topics": ["marketing-portfolio"],
+  "note": "GitHub topics are repository settings. This file documents the topic to apply: marketing-portfolio. See the README section Repository topic."
+}
